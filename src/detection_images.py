@@ -24,7 +24,7 @@ def detect_and_predict_mask(image, faceNet, maskNet, args):
     detections = faceNet.forward()
 
     # loop over the detections
-    for i in range(0, detections.shape[2]):
+    for i in range(0, detections.shape[1]):
         # extract the confidence (i.e., probability) associated with
         # the detection
         confidence = detections[0, 0, i, 2]
@@ -80,10 +80,10 @@ def main():
     ap.add_argument("-i", "--image", required=True, 
     help="path to input image")
     ap.add_argument("-f", "--face", type=str,
-    default="face_detect_model",
+    default="facemask_detect_model",
     help="path to face detector model directory")
     ap.add_argument("-m", "--model", type=str,
-    default="mask_detect_model",
+    default="facemask_detect_model",
     help="path to trained face mask detector model")
     ap.add_argument("-c", "--confidence", type=float, default=0.5,
     help="minimum probability to filter weak detections")
